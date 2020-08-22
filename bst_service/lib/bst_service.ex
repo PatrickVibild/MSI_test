@@ -1,4 +1,20 @@
-defmodule BST do
+defmodule BstService do
+  @moduledoc """
+  Documentation for `BstService`.
+  """
+
+  @doc """
+  Hello world.
+
+  ## Examples
+
+      iex> BstService.hello()
+      :world
+
+  """
+  def hello do
+    :world
+  end
   @moduledoc false
 
   def new([]), do: []
@@ -9,7 +25,7 @@ defmodule BST do
 
   def add(pre_order_tree, element) when is_list(pre_order_tree) do
     Enum.concat(pre_order_tree, [element])
-      |> new
+    |> new
   end
 
   def pre_order(tree = %Leaf{}) do
