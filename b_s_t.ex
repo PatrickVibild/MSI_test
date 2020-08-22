@@ -22,10 +22,10 @@ defmodule BST do
     %Leaf{value: value}
   end
   defp insert(tree = %Leaf{}, value) do
-    if value > tree.value do
-      %Leaf{tree | right_leaf: insert(tree.right_leaf, value)}
-    else
-      %Leaf{tree | left_leaf: insert(tree.left_leaf, value)}
+    cond do
+      value > tree.value  -> %Leaf{tree | right_leaf: insert(tree.right_leaf, value)}
+      value < tree.value  -> %Leaf{tree | left_leaf: insert(tree.left_leaf, value)}
+      true                -> tree
     end
   end
 
