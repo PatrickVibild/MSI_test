@@ -4,30 +4,49 @@ defmodule BstService do
   """
 
   @doc """
-  Hello world.
+  New Binary Search Tree (BST) created from a BST pre-order list.
+
+  Returns a map of `Leaf` representing a BST.
 
   ## Examples
 
-      iex> BstService.hello()
-      :world
+      iex> BstService.new([5, 7, 6])
+      %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: %Leaf{left_leaf: nil, right_leaf: nil, value: 6}, right_leaf: nil, value: 7}, value: 5}
 
+      iex> BstService.new([])
+      nil
   """
-  def hello do
-    :world
-  end
-  @moduledoc false
 
-  def new([]), do: []
+  def new([]), do: nil
   def new([head | tail]) do
     insert(nil, head)
     |> insert_recursive(tail)
   end
+
+  @doc """
+  Add a `element` to a  Binary Search Tree (BST) created from a BST `pre_order_tree` list.
+
+  Returns a map of `Leaf` representing a BST.
+
+  ## Examples
+
+      iex> BstService.add([-1, 5, 2], 0)
+      %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: %Leaf{left_leaf: %Leaf{left_leaf: nil, right_leaf: nil, value: 0}, right_leaf: nil, value: 2}, right_leaf: nil, value: 5}, value: -1}
+  """
 
   def add(pre_order_tree, element) when is_list(pre_order_tree) do
     Enum.concat(pre_order_tree, [element])
     |> new
   end
 
+  @doc """
+  Returns a list representing the input `tree` in a pre-order format
+
+  ## Examples
+
+      iex> BstService.pre_order(%Leaf{left_leaf: %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: nil, right_leaf: nil, value: -7}, value: 0}, value: -5}, right_leaf: nil, value: 10})
+      [10, -5, 0, -7]
+  """
   def pre_order(tree = %Leaf{}) do
     [[tree.value | pre_order(tree.left_leaf)] | pre_order(tree.right_leaf)]
     |> List.flatten
