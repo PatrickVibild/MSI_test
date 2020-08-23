@@ -1,8 +1,8 @@
-defmodule Bst.Controller.Router do
+defmodule BstServer.Controller.Router do
   @moduledoc false
   use Plug.Router
 
-  alias Bst.Controller.VerifyRequest
+  alias BstServer.Controller.VerifyRequest
 
   plug Plug.Parsers, parsers: [:urlencoded, :multipart]
   plug VerifyRequest, fields: ["content", "mimetype"], paths: ["/upload"]

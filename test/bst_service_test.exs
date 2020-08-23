@@ -1,11 +1,11 @@
-defmodule BstServiceTest do
-  alias Bst.Modules.BstService, as: BstService
-  alias Bst.Modules.Leaf, as: Leaf
+defmodule BstTest do
+  alias BstServer.Modules.Bst, as: Bst
+  alias BstServer.Modules.Leaf, as: Leaf
   use ExUnit.Case
-  doctest BstService
+  doctest Bst
 
   test "creates a BST of integers" do
-    assert BstService.new([0, -1, 1]) ==
+    assert Bst.new([0, -1, 1]) ==
              %Leaf{
                left_leaf: %Leaf{
                  left_leaf: nil,
@@ -21,13 +21,13 @@ defmodule BstServiceTest do
              }
   end
 
-  test "BST skip add duplicated elements only once" do
-    assert BstService.new([100, 100, 100]) ==
+  test "BST add duplicated elements only once" do
+    assert Bst.new([100, 100, 100]) ==
              %Leaf{left_leaf: nil, right_leaf: nil, value: 100}
   end
 
   test "Add element to a BST" do
-    assert BstService.add([0, -1], 1) ==
+    assert Bst.add([0, -1], 1) ==
              %Leaf{
                left_leaf: %Leaf{
                  left_leaf: nil,
@@ -44,7 +44,7 @@ defmodule BstServiceTest do
   end
 
   test "Create a BST of with different data type" do
-    assert BstService.new(
+    assert Bst.new(
              [10, &(&1 + &2), 10, %{name: "patrick", last: "vibild"}, "helloworld", [0], [keyword: "list"]]
            ) ==
              %Leaf{
@@ -110,7 +110,7 @@ defmodule BstServiceTest do
       },
       value: 10
     }
-    assert BstService.pre_order(tree) == [
+    assert Bst.pre_order(tree) == [
              10,
              &:erlang.+/2,
              %{last: "vibild", name: "patrick"},
@@ -122,6 +122,6 @@ defmodule BstServiceTest do
 
   test"Pre_order of a empty tree" do
     tree = nil
-    assert BstService.pre_order(tree) == []
+    assert Bst.pre_order(tree) == []
   end
 end

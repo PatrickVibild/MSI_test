@@ -1,3 +1,4 @@
+#Also note Elixir v1.10 requires Erlang/OTP 21+
 language: elixir
 elixir:
   - 1.10

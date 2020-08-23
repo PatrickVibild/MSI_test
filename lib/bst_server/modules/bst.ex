@@ -1,7 +1,7 @@
-defmodule Bst.Modules.BstService do
-  alias Bst.Modules.Leaf, as: Leaf
+defmodule BstServer.Modules.Bst do
+  alias BstServer.Modules.Leaf, as: Leaf
   @moduledoc """
-  Documentation for `BstService`.
+  Documentation for `Bst`.
   """
 
   @doc """
@@ -11,10 +11,10 @@ defmodule Bst.Modules.BstService do
 
   ## Examples
 
-      iex> BstService.new([5, 7, 6])
+      iex> Bst.new([5, 7, 6])
       %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: %Leaf{left_leaf: nil, right_leaf: nil, value: 6}, right_leaf: nil, value: 7}, value: 5}
 
-      iex> BstService.new([])
+      iex> Bst.new([])
       nil
   """
 
@@ -31,7 +31,7 @@ defmodule Bst.Modules.BstService do
 
   ## Examples
 
-      iex> BstService.add([-1, 5, 2], 0)
+      iex> Bst.add([-1, 5, 2], 0)
       %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: %Leaf{left_leaf: %Leaf{left_leaf: nil, right_leaf: nil, value: 0}, right_leaf: nil, value: 2}, right_leaf: nil, value: 5}, value: -1}
   """
 
@@ -45,7 +45,7 @@ defmodule Bst.Modules.BstService do
 
   ## Examples
 
-      iex> BstService.pre_order(%Leaf{left_leaf: %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: nil, right_leaf: nil, value: -7}, value: 0}, value: -5}, right_leaf: nil, value: 10})
+      iex> Bst.pre_order(%Leaf{left_leaf: %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: nil, right_leaf: nil, value: -7}, value: 0}, value: -5}, right_leaf: nil, value: 10})
       [10, -5, 0, -7]
   """
   def pre_order(tree = %Leaf{}) do

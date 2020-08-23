@@ -1,5 +1,5 @@
 #https://elixirschool.com/en/lessons/specifics/plug/
-defmodule Bst.Controller.VerifyRequest do
+defmodule BstServer.Controller.VerifyRequest do
   @moduledoc false
   defmodule IncompleteRequestError do
     @moduledoc """

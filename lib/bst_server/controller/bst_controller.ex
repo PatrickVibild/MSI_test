@@ -1,4 +1,4 @@
-defmodule Bst.Controller.BstController do
+defmodule BstServer.Controller.BstController do
   @moduledoc false
   import Plug.Conn
 

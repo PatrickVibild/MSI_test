@@ -2,4 +2,4 @@
 #File need to be exs - not compiled elixir file.
 use Mix.Config
 
-config :bst, cowboy_port: 6543
+config :BstServer, cowboy_port: 6543
