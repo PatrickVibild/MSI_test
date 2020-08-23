@@ -49,7 +49,7 @@ defmodule BstServer.Modules.Bst do
     Enum.concat(pre_order_tree, [element])
     |> new
   end
-  def add(_pre_order_tree, element) when is_nil(_pre_order_tree) do
+  def add(pre_order_tree, element) when is_nil(pre_order_tree) do
     new([element])
   end
 
