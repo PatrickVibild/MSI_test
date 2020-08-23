@@ -2,6 +2,13 @@ defmodule BstServer.Modules.Bst do
   alias BstServer.Modules.Leaf, as: Leaf
   @moduledoc """
   Documentation for `Bst`.
+
+  Module that represent the data structure binary search tree (bst).
+
+  bst can be created with function `new` having a input of a list of pre_order representation of bst.
+
+  The module also contains a pre_order function that takes a bst as input and transform it to a list of the elements printed
+  in pre order format.
   """
 
   @doc """
@@ -33,11 +40,17 @@ defmodule BstServer.Modules.Bst do
 
       iex> Bst.add([-1, 5, 2], 0)
       %Leaf{left_leaf: nil, right_leaf: %Leaf{left_leaf: %Leaf{left_leaf: %Leaf{left_leaf: nil, right_leaf: nil, value: 0}, right_leaf: nil, value: 2}, right_leaf: nil, value: 5}, value: -1}
+
+      iex> Bst.add(nil, 3)
+      %BstServer.Modules.Leaf{left_leaf: nil, right_leaf: nil, value: 3}
   """
 
   def add(pre_order_tree, element) when is_list(pre_order_tree) do
     Enum.concat(pre_order_tree, [element])
     |> new
+  end
+  def add(_pre_order_tree, element) when is_nil(_pre_order_tree) do
+    new([element])
   end
 
   @doc """

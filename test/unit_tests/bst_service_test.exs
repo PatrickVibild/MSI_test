@@ -1,4 +1,4 @@
-defmodule BstTest do
+defmodule Test.UnitTests.BstTest do
   alias BstServer.Modules.Bst, as: Bst
   alias BstServer.Modules.Leaf, as: Leaf
   use ExUnit.Case
