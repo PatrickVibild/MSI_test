@@ -1,4 +1,5 @@
-defmodule BstService do
+defmodule Bst.Modules.BstService do
+  alias Bst.Modules.Leaf, as: Leaf
   @moduledoc """
   Documentation for `BstService`.
   """
