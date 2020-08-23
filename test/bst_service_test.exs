@@ -1,4 +1,6 @@
 defmodule BstServiceTest do
+  alias Bst.Modules.BstService, as: BstService
+  alias Bst.Modules.Leaf, as: Leaf
   use ExUnit.Case
   doctest BstService
 
