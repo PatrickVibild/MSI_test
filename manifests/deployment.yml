@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "bst-cdcb"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "bst-cdcb"
+    spec:
+      containers:
+        - name: "bst-cdcb"
+          image: "bstservice.azurecr.io/bst"
+          ports:
+          - containerPort: 6543
