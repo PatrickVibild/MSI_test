@@ -26,6 +26,10 @@ defmodule BstServer.Controller.Router do
     send_resp(conn, status, Poison.encode!(body))
   end
 
+  get "/status" do
+    send_resp(conn, status, "Running healthy")
+  end
+
   match _ do
     send_resp(conn, 404, "Oops! the server is only responding to /insert")
   end
