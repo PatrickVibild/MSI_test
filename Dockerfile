@@ -9,8 +9,8 @@ RUN mix local.rebar --force \
     && mix release
 
 # ---- Application Stage ----
+# bitwalker a docker image of alpine with installed erlang.
 FROM bitwalker/alpine-erlang:latest
-#RUN apk update && apk add --no-cache libncursesw
 WORKDIR /app
 COPY --from=builder _build/prod/rel/bst_server/ .
 CMD ["/app/bin/bst_server", "start"]

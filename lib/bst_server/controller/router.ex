@@ -1,19 +1,23 @@
 defmodule BstServer.Controller.Router do
-  @moduledoc false
+  @moduledoc """
+  Controller module for BST application.
+  Users can insert element to a bst and endpoint returns the tree in a pre_order format.
+  """
   use Plug.Router
   use Plug.ErrorHandler
   alias BstServer.Modules.Bst, as: Bst
 
   require Logger
 
-
-  alias BstServer.Controller.VerifyRequest
-
   plug Plug.Parsers, parsers: [:json], json_decoder: Poison
   plug :match
   plug :dispatch
 
+  @doc """
+  Insert element `n` into a given `tree`
 
+  Returns pre_order format tree result.
+  """
   post "/insert" do
     Logger.info("Inserting value on bst")
     {status, body} =
@@ -33,7 +37,7 @@ defmodule BstServer.Controller.Router do
 
   match _ do
     Logger.info("Page not found!")
-    send_resp(conn, 404, "Oops! the server is only responding to /insert")
+    send_resp(conn, 404, "Oops! the server is only responding to /insert and /status")
   end
 
   defp handle_errors(conn, %{kind: kind, reason: reason, stack: stack}) do
