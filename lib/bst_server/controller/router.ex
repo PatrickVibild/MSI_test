@@ -10,7 +10,6 @@ defmodule BstServer.Controller.Router do
   alias BstServer.Controller.VerifyRequest
 
   plug Plug.Parsers, parsers: [:json], json_decoder: Poison
-  plug VerifyRequest, fields: ["content", "mimetype"], paths: ["/upl"]
   plug :match
   plug :dispatch
 
@@ -28,8 +27,8 @@ defmodule BstServer.Controller.Router do
   end
 
   get "/status" do
-    Logger.info("Status requested")
-    send_resp(conn, status, "Running healthy")
+    Logger.info("Requesting server status.")
+    send_resp(conn, 200, "Healthy")
   end
 
   match _ do
