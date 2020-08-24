@@ -26,6 +26,15 @@ test and deploy the application.
 `mix test`
 `mix run --no-halt`
 `MIX_ENV=prod mix release`
+## Pipeline
+Pipeline has been created as suggested with Travis-ci.
+
+All tests runs before merging code into github.
+
+Also, dockerhub triggers a container build on each change on github having always a test passed build container.
+
+for a CD/CI from source -> deployment only missing step is triggering a update of the pod on kubernetes on each successful build of the container
+
 
 ## Docker
 Application is dockerize in a two stage dockerfile. 
@@ -71,3 +80,8 @@ communication with the module is with a list of elements instead.
 
 Given a preorder traversal of a BST I can reconstruct the BST and then add the element. In order for readability, testing and usage
 the created BST is returned as its preorder traversal.
+
+Related with the pipeline, as mentioned the only missing part is to trigger an update of kubernetes workload on every new 
+container build. I decided to use KubeSail to deploy my container, and I could not find an integration with git-hub or docket-hub.
+However, I have experience doing this step on this step in Azure deploying a source code to Azure Container Instances with 
+Azure devops build pipeline and release pipeline.
