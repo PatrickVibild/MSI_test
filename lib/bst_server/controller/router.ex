@@ -16,6 +16,7 @@ defmodule BstServer.Controller.Router do
 
 
   post "/insert" do
+    Logger.info("Inserting value on bst")
     {status, body} =
       case conn.body_params do
         %{"tree" => tree, "n" => n} -> {200, Bst.add(tree, n) |> Bst.pre_order}
@@ -27,10 +28,12 @@ defmodule BstServer.Controller.Router do
   end
 
   get "/status" do
+    Logger.info("Status requested")
     send_resp(conn, status, "Running healthy")
   end
 
   match _ do
+    Logger.info("Page not found!")
     send_resp(conn, 404, "Oops! the server is only responding to /insert")
   end
 
